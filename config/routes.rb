@@ -2,14 +2,16 @@ Rails.application.routes.draw do
 
   root 'places#index'
 
-  get '/places' => 'places#index'
+  #Golden 7 
+  get '/places' => 'places#index'  
   get '/places/new' => 'places#new'
-  get '/places/submit_new' => 'places#submitted'
+  post '/places' => 'places#create'  # post http request 
+    
   get '/places/:id' => 'places#show'
-  get '/places/:id/delete' => 'places#delete'
+  delete '/places/:id' => 'places#destroy' # maps to action destry under golden 7
   get '/places/:id/edit' => 'places#edit'
-  get '/places/:id/submit_edit' => 'places#update'
-
-  get '/reviews/:place_id/submit_new'  => 'reviews#create'
+  patch '/places/:id'=> 'places#update' # updated to patch http request since updating existing
+    
+  post '/reviews/:id'  => 'reviews#create' # :places_id changed to :id for constance and post used
 
 end
